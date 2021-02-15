@@ -49,7 +49,7 @@ int main(){
 			//if user input is y (yes), the code will continue with a new random number and the number of tries reset
 			else{
 				srand(time(0)); 
-				number = rand() % 100 + 1; // random number between 1 and 100
+				number = rand() % 101;
 				tries = 0;
 			}
 		}
