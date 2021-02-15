@@ -11,7 +11,7 @@ int main(){
 	char playagain = 'y';
 	
 	//generating random number between 0 and 100
-	srand(time(0)); 
+	srand(time(NULL)); 
 	number = rand() % 101;
 	
 	//while loop to keep running until user guesses the number
@@ -48,7 +48,7 @@ int main(){
 			
 			//if user input is y (yes), the code will continue with a new random number and the number of tries reset
 			else{
-				srand(time(0)); 
+				srand(time(NULL)); 
 				number = rand() % 101;
 				tries = 0;
 			}
