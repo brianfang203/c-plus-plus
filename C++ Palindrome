@@ -10,7 +10,6 @@ int main(){
     char str2[80];
     bool found = false;
     int count = 0;
-    int count2 = strlen(str2) - 1;
 
     //taking in user input
     cout << "Enter a sentence: ";
