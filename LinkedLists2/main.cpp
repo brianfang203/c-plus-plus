@@ -20,42 +20,42 @@ int main() {
 	std::cout << std::fixed;
 	std::cout << std::setprecision(2);
   
-  //while still running
+  	//while still running
 	while (true) {
 		char input[10];
 		int intInput;
 		float floatInput;
     
-    //user input
+    		//user input
 		cout << "Would you like to ADD, PRINT, DELETE, AVERAGE, QUIT: " << endl;
 		cin.get(input, 10);
 		cin.clear();
 		cin.ignore(1000000, '\n');
 
-    //if input is add
+    		//if input is add
 		if (strcmp(input, "ADD") == 0) {
 			Student* newStudent = new Student;
       
-      //adding first name
+      			//adding first name
 			cout << endl << "First name: " << endl << ">> ";
 			cin.get(newStudent -> getFirst(), 10);
 			cin.clear();
 			cin.ignore(1000000, '\n');
       
-      //adding last name
+      			//adding last name
 			cout << "Last name: " << endl << ">> ";
 			cin.get(newStudent -> getLast(), 10);
 			cin.clear();
 			cin.ignore(1000000, '\n');
       
-      //adding id
+      			//adding id
 			cout << "ID: " << endl << ">> ";
 			cin >> intInput;
 			cin.clear();
 			cin.ignore(1000000, '\n');
 			newStudent -> setID(intInput);
       
-      //adding GPA
+      			//adding GPA
 			cout << "GPA: " << endl << ">> ";
 			cin >> floatInput;
 			cin.clear();
@@ -71,7 +71,7 @@ int main() {
 				cout << endl << "Currently no students" << endl << endl;
 			}
       
-      //printing students
+      			//printing students
  			else {
 				cout << endl;
 				print(first);
@@ -84,7 +84,7 @@ int main() {
 				cout << endl << "There are no students to delete" << endl << endl;
 			}
       
-      //deleting student
+      			//deleting student
 			else {
 				cout << endl << "First name of the student you want to delete: " << endl << ">> ";
 				cin.get(input, 10);
@@ -100,7 +100,7 @@ int main() {
 				cout << endl << "Currently no students" << endl << endl;
 			}
       
-      //averaging GPA
+      			//averaging GPA
 			else {
 				cout << endl << "Average GPA: " << average(first) << endl << endl;
 			}
@@ -111,7 +111,7 @@ int main() {
 			break;
 		}
     
-    //incorrect format
+    		//incorrect format
 		else {
 			cout << "Incorrect format" << endl;
 		}
@@ -159,7 +159,7 @@ void print(Node* next) {
 void remove(Node* next, Node* previous, char name[]) {
 	char yesno;
   
-  //first student
+	//first student
 	if (next == first && strcmp(next -> getStudent() -> getFirst(), name) == 0) {
 		cout << endl << next -> getStudent() -> getLast() << ", ";
 		cout << next -> getStudent() -> getFirst() << endl;
@@ -170,7 +170,7 @@ void remove(Node* next, Node* previous, char name[]) {
 		cin.clear();
 		cin.ignore(1000000, '\n');
     
-    //delete student
+    		//delete student
 		if (yesno == 'y') {
 			cout << "Student has been deleted" << endl << endl;
 			if (next -> getNext() == NULL) {
@@ -184,7 +184,7 @@ void remove(Node* next, Node* previous, char name[]) {
 			}
 		}
     
-    //cancel deleting student
+    		//cancel deleting student
 		else if (yesno == 'n') {
 			cout << "Canceled" << endl << endl;
 			if (next -> getNext() != NULL) {
@@ -192,13 +192,13 @@ void remove(Node* next, Node* previous, char name[]) {
 			}
 		}
     
-    //incorrect format
+    		//incorrect format
 		else {
 			cout << "Incorrect format" << endl << endl;
 		}
 	}
   
-  //rest of students
+  	//rest of students
 	else if (strcmp(next -> getStudent() -> getFirst(), name) == 0) {
 		cout << endl << next -> getStudent() -> getLast() << ", ";
 		cout << next -> getStudent() -> getFirst() << endl;
@@ -209,19 +209,19 @@ void remove(Node* next, Node* previous, char name[]) {
 		cin.clear();
 		cin.ignore(1000000, '\n');
     
-    //delete student
+   	 	//delete student
 		if (yesno == 'y') {
 			cout << "Student has been deleted" << endl << endl;
 			previous -> setNext(next -> getNext());
 			next -> ~Node();
 		}
     
-    //cancel deleting student
+    		//cancel deleting student
 		else if (yesno == 'n') {
 			cout << "Canceled" << endl << endl;
 		}
     
-    //incorrect format
+    		//incorrect format
 		else {
 			cout << "Incorrect format" << endl << endl;
 		}
@@ -235,13 +235,13 @@ float average(Node* next) {
 	float total = 0;
 	int counter = 0;
   
-  //if first student
+  	//if first student
 	if (next == first) {
 		total += next -> getStudent() -> getGPA();
 		counter++;
 	}
   
-  //add rest of students and average
+  	//add rest of students and average
 	while (next -> getNext() != NULL) {
 		total += next -> getNext() -> getStudent() -> getGPA();
 		counter++;
