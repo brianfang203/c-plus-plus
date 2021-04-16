@@ -1,3 +1,5 @@
+#solution go, north, go, north, get, keys, go, south, go, south, go, east, go, south, go, west, get, book, go, east, go, east, get, pencil, go, west, go, north, go, west
+
 #include <iostream>
 #include <cstring>
 #include <vector>
@@ -152,6 +154,7 @@ int move(vector<Room*>* rooms, int currentRoom, char direction[])
 //initializing all the rooms
 void initializeRooms(vector<Room*>* rooms)
 {
+	//directions
 	char* north = (char*)("north");
 	char* south = (char*)("south");
 	char* east = (char*)("east");
@@ -159,7 +162,7 @@ void initializeRooms(vector<Room*>* rooms)
 	map<int, char*> temp;
 
 	Room* hallA  = new Room();
-	hallA -> setDescription((char*)("in the entrance hallway."));
+	hallA -> setDescription((char*)("in A hall."));
 	hallA -> setId(1);
 	temp.insert(pair<int, char*> (2, east));
 	temp.insert(pair<int, char*> (3, north));
@@ -170,7 +173,7 @@ void initializeRooms(vector<Room*>* rooms)
 	temp.clear();
 
 	Room* hallB = new Room();
-	hallB -> setDescription((char*)("in the coat room."));
+	hallB -> setDescription((char*)("in B hall."));
 	hallB -> setId(4);
 	temp.insert(pair<int, char*> (1, north));
 	hallB -> setExits(temp);
@@ -179,7 +182,7 @@ void initializeRooms(vector<Room*>* rooms)
 	temp.clear();
 
 	Room* hallC = new Room();
-	hallC -> setDescription((char*)("in the dining room."));
+	hallC -> setDescription((char*)("in C hall."));
 	hallC -> setId(3);
 	temp.insert(pair<int, char*> (1, south));
 	temp.insert(pair<int, char*> (13, north));
@@ -189,37 +192,37 @@ void initializeRooms(vector<Room*>* rooms)
 	temp.clear();
 
 	Room* hallD = new Room();
-	hallD -> setDescription((char*)("in the garage."));
+	hallD -> setDescription((char*)("in D hall."));
 	hallD -> setId(13);
 	temp.insert(pair<int, char*> (3, south));
 	hallD -> setExits(temp);
-	hallD -> setItem(3/*shield*/);
+	hallD -> setItem(3/*keys*/);
 	rooms -> push_back(hallD);
 	temp.clear();
 
 	Room* hallE = new Room();
-	hallE -> setDescription((char*)("in the living room, fun fact: you can't die in this room"));
+	hallE -> setDescription((char*)("in E hall."));
 	hallE -> setId(2);
 	temp.insert(pair<int, char*> (1, west));
 	temp.insert(pair<int, char*> (5, north));
 	temp.insert(pair<int, char*> (8, south));
 	temp.insert(pair<int, char*> (6, east));
 	hallE -> setExits(temp);
-	hallE -> setItem(4/*boots*/);
+	hallE -> setItem(4/*paper*/);
 	rooms -> push_back(hallE);
 	temp.clear();
 
 	Room* hallF = new Room();
-	hallF -> setDescription((char*)("in the bathroom."));
+	hallF -> setDescription((char*)("in F hall."));
 	hallF -> setId(5);
 	temp.insert(pair<int, char*> (2, south));
 	hallF -> setExits(temp);
-	hallF -> setItem(5/*tp*/);
+	hallF -> setItem(5/*backpack*/);
 	rooms -> push_back(hallF);
 	temp.clear();
 
 	Room* hallG = new Room();
-	hallG -> setDescription((char*)("in the guest bedroom."));
+	hallG -> setDescription((char*)("in G hall."));
 	hallG -> setId(6);
 	temp.insert(pair<int, char*> (2, west));
 	temp.insert(pair<int, char*> (7, north));
@@ -229,7 +232,7 @@ void initializeRooms(vector<Room*>* rooms)
 	temp.clear();
 
 	Room* hallH = new Room();
-	hallH -> setDescription((char*)("in the closet. Dead end!"));
+	hallH -> setDescription((char*)("in H hall."));
 	hallH -> setId(7);
 	temp.insert(pair<int, char*> (6, south));
 	hallH -> setExits(temp);
@@ -238,7 +241,7 @@ void initializeRooms(vector<Room*>* rooms)
 	temp.clear();
 
 	Room* hallone = new Room();
-	hallone -> setDescription((char*)("in the inner hallway."));
+	hallone -> setDescription((char*)("in one hall."));
 	hallone -> setId(8);
 	temp.insert(pair<int, char*> (2, north));
 	temp.insert(pair<int, char*> (9, west));
@@ -249,27 +252,27 @@ void initializeRooms(vector<Room*>* rooms)
 	temp.clear();
 
 	Room* halltwo = new Room();
-	halltwo -> setDescription((char*)("in your office. No time to work."));
+	halltwo -> setDescription((char*)("in two hall."));
 	halltwo -> setId(9);
 	temp.insert(pair<int, char*> (8, east));
 	halltwo -> setExits(temp);
-	halltwo -> setItem(1/*laptop*/);
+	halltwo -> setItem(1/*book*/);
 	rooms -> push_back(halltwo);
 	temp.clear();
 
 	Room* hallthree = new Room();
-	hallthree -> setDescription((char*)("in the master bedroom."));
+	hallthree -> setDescription((char*)("in three hall."));
 	hallthree -> setId(10);
 	temp.insert(pair<int, char*> (8, west));
 	temp.insert(pair<int, char*> (14, north));
 	temp.insert(pair<int, char*> (12, east));
 	hallthree -> setExits(temp);
-	hallthree -> setItem(2/*briefcase*/);
+	hallthree -> setItem(2/*pencil*/);
 	rooms -> push_back(hallthree);
 	temp.clear();
 
 	Room* cafeteria = new Room();
-	cafeteria -> setDescription((char*)("in a secret room. You shouldn't be here!"));
+	cafeteria -> setDescription((char*)("in the cafeteria."));
 	cafeteria -> setId(14);
 	temp.insert(pair<int, char*> (10, south));
 	cafeteria -> setExits(temp);
@@ -278,7 +281,7 @@ void initializeRooms(vector<Room*>* rooms)
 	temp.clear();
 
 	Room* gym = new Room();
-	gym -> setDescription((char*)("on the balcony. You can see the spaceship!"));
+	gym -> setDescription((char*)("in the gym."));
 	gym -> setId(12);
 	temp.insert(pair<int, char*> (10, west));
 	gym -> setExits(temp);
@@ -287,7 +290,7 @@ void initializeRooms(vector<Room*>* rooms)
 	temp.clear();
 
 	Room* auditorium = new Room();
-	auditorium -> setDescription((char*)("in the outside garden. No exit, but there is a lovely garden"));
+	auditorium -> setDescription((char*)("in the auditorium."));
 	auditorium -> setId(11);
 	temp.insert(pair<int, char*> (8, north));
 	temp.insert(pair<int, char*> (15, east));
@@ -297,7 +300,7 @@ void initializeRooms(vector<Room*>* rooms)
 	temp.clear();
 
 	Room* office = new Room();
-	office -> setDescription((char*)("in the outside shed."));
+	office -> setDescription((char*)("in the office."));
 	office -> setId(15);
 	temp.insert(pair<int, char*> (11, west));
 	office -> setExits(temp);
@@ -306,31 +309,34 @@ void initializeRooms(vector<Room*>* rooms)
 	temp.clear();
 }
 
+//initialize all items
 void initializeItems(vector<Item*>* items) {
-	Item* boots = new Item();
-	boots -> setName((char*)("remote"));
-	boots -> setId(4);
-	items -> push_back(boots);
+	
+	Item* book = new Item();
+	book -> setName((char*)("book"));
+	book -> setId(1);
+	items -> push_back(book);
 
-	Item* tp = new Item();
-	tp -> setName((char*)("toothbrush"));
-	tp -> setId(5);
-	items -> push_back(tp);
+	Item* pencil = new Item();
+	pencil -> setName((char*)("pencil"));
+	pencil -> setId(2);
+	items -> push_back(pencil);
 
-	Item* laptop = new Item();
-	laptop -> setName((char*)("laptop"));
-	laptop -> setId(1);
-	items -> push_back(laptop);
+	Item* keys = new Item();
+	keys -> setName((char*)("keys"));
+	keys -> setId(3);
+	items -> push_back(keys);
+	
+	Item* paper = new Item();
+	paper -> setName((char*)("paper"));
+	paper -> setId(4);
+	items -> push_back(paper);
 
-	Item* bcase = new Item();
-	bcase -> setName((char*)("briefcase"));
-	bcase -> setId(2);
-	items -> push_back(bcase);
-
-	Item* ck = new Item();
-	ck -> setName((char*)("shield"));
-	ck -> setId(3);
-	items -> push_back(ck);
+	Item* backpack = new Item();
+	backpack -> setName((char*)("backpack"));
+	backpack -> setId(5);
+	items -> push_back(backpack);
+	
 }
 
 //print room function
