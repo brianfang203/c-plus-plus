@@ -11,7 +11,7 @@ int main() {
   
 	char input[20];
   
-  //create student
+  	//create student
 	Student* stud = new Student;
 	cout << "Enter student's first name: " << endl;
 	cin.get(stud -> getFirst(), 50);
